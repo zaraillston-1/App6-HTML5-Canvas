@@ -7,7 +7,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Zara Illston
  
 Further Information:
 http://cns.utexas.edu/fri
@@ -32,28 +32,35 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
  	<style>
-  		body {
-    		margin: 0;
-    		padding: 0;
-    		display: flex;
-    		flex-direction: column;
-    		justify-content: center;
-    		align-items: center;
-    		height: 100vh;
-    		background-color: #f0f0f0;
-  		}
-  		canvas {
-    		border: 2px solid black;
-    		margin: 10px;
-    		max-width: 100%;
-    		height: auto;
- 	 	}
-  		button {
-    		padding: 10px 20px;
-    		margin: 10px;
-    		font-size: 16px;
-    		cursor: pointer;
-  		}
+  	  body {
+    	    margin: 0;
+	  }
+    	  .page {
+	     width: 100vw;
+	     height: 100vh;
+	     position: fixed;
+	     top: 0;
+	     left: -100vw;
+	     overflow-y: auto;
+	     z-index: 0;
+	     background color: hsl(0, 0%, 100%);
+	  }
+	  .page:target {
+	     left: 0vw;
+	     z-index: 1;
+	  }
+	  canvas {
+	     border: 2px solid black;
+	     margin: 10px;
+	     max-width: 100%
+	     height: auto;
+	  }
+	  button {
+	     padding: 10px 20px;
+	     margin: 10px;
+	     font-size: 16px;
+	     cursor: pointer;
+	  }
 	</style>
 
    </head> 
