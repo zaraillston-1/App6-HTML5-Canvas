@@ -60,22 +60,45 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 
 <script>
-var docMod = document.lastModified; // loads last modified time stamp into docMod variable
-alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
-console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
+	var docMod = document.lastModified; // loads last modified time stamp into docMod variable
+	alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
+	console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
+      // Get the canvas and its context
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth * 0.9; // 90% of screen width
-canvas.height = window.innerHeight * 0.6; // 60% of screen height
+      // Set canvas size to fit the screen (90% width, 40% height)
+      canvas.width = window.innerWidth * 0.9;
+      canvas.height = window.innerHeight * 0.4;
 
-document.getElementById("drawRectBtn").addEventListener("click", function() {
-  ctx.fillStyle = "pink"; // Set the fill color
-  ctx.fillRect(50, 50, 200, 100); // Draw a rectangle at (50, 50) with width 200px and height 100px
-});
+      // Draw Rectangle Button
+      document.getElementById('drawRectBtn').addEventListener('click', function () {
+        ctx.fillStyle = 'pink'; // Set the fill color
+        ctx.fillRect(50, 50, 200, 100); // Draw a rectangle
+      });
 
-</script>
+      // Draw Name Button
+      document.getElementById('drawNameBtn').addEventListener('click', function () {
+        ctx.font = '30px Arial'; // Set font
+        ctx.fillStyle = 'pink'; // Set text color
+        ctx.fillText('Zara Elise Illston', 100, 200); // Draw your name
+      });
+
+      // Load Image Button
+      document.getElementById('loadImageBtn').addEventListener('click', function () {
+        const img = new Image();
+        img.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.holistapet.com%2Fblogs%2Fcat-breeds%2Fmaine-coon-guide&psig=AOvVaw3EHkA7sYtvVw6QH5lZi8ra&ust=1742996937191000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjYjd-vpYwDFQAAAAAdAAAAABAE'; // Replace with your image URL
+        img.onload = function () {
+          ctx.drawImage(img, 50, 300, 200, 200); // Draw image on canvas
+        };
+      });
+
+      // Clear Canvas Button
+      document.getElementById('clearCanvasBtn').addEventListener('click', function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
+      });
+    </script>
 
 
 
