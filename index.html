@@ -117,11 +117,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       ctx.fillRect(50, 50, 200, 100);
     });
 
-    // Add a click event for drawing your name
+    // Add a click event for drawing your name (corrected the Y position to avoid clipping)
     document.getElementById('drawNameBtn').addEventListener('click', function () {
       ctx.font = '30px Chiller';
       ctx.fillStyle = 'orange';
-      ctx.fillText('Zara Elise Illston', 10, 10)
+      ctx.fillText('Zara Elise Illston', 20, canvas.height / 2); // Place text vertically centered in canvas
     });
 
     // Add a click event to load and scale an image
@@ -143,4 +143,5 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     });
   </script>
 </body>
+
 </html>
