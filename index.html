@@ -91,8 +91,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	const canvas = document.getElementById('myCanvas');
 	const ctx = canvas.getContext('2d');
 
-	canvas.width = window.innerWidth * 0.9;
-	canvas.height = window.innerHeight * 0.6;
+	canvas.width = window.innerWidth * 0.8;
+	canvas.height = window.innerHeight * 0.4;
 
 	document.getElementById('drawRectBtn').addEventListener('click', function () {
 	  ctx.fillStyle = 'pink';
@@ -109,7 +109,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	  const img = new Image();
 	  img.src = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Red_Kitten_01.jpg';
 	  img.onload = function () {
-		ctx.drawImage(img, 50, 300, 200, 200);
+	    const imageWidth = 200;
+	    const imageHeight = 200;
+	    ctx.drawImage(img, 50, 300, 200, 200);
 	  };
 	});
 
