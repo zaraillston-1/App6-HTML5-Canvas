@@ -106,13 +106,28 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	});
 
 	document.getElementById('loadImageBtn').addEventListener('click', function () {
-	  const img = new Image();
-	  img.src = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Red_Kitten_01.jpg';
-	  img.onload = function () {
-	    const imageWidth = 200;
-	    const imageHeight = 200;
-	    ctx.drawImage(img, 50, 300, 200, 200);
-	  };
+  	  const img = new Image();
+  	  img.src = 'https://example.com/your-image.jpg'; // Replace with your image URL
+  	  img.onload = function () {
+   
+    	    const maxWidth = canvas.width - 100;  // Subtract margins or padding if necessary
+    	    const maxHeight = canvas.height - 100;
+
+    	    let imageWidth = img.width;
+    	    let imageHeight = img.height;
+
+
+    	    if (img.width > maxWidth) {
+      		imageWidth = maxWidth;
+      		imageHeight = (img.height * maxWidth) / img.width;
+    	    }
+    	    if (imageHeight > maxHeight) {
+      		imageHeight = maxHeight;
+      		imageWidth = (img.width * maxHeight) / img.height;
+    	    }
+
+    	    ctx.drawImage(img, 300, 50, imageWidth, imageHeight);
+  	  };
 	});
 
 	document.getElementById('clearCanvasBtn').addEventListener('click', function () {
