@@ -25,7 +25,7 @@ blah, blah, blah, blah
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
-	
+
 
 <head> 
   <title>App6---HTML5-Canvas</title>  
@@ -61,15 +61,17 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       margin-left: auto;
       margin-right: auto;
     }
+    /* Container for buttons with flexbox layout */
+    .button-container {
+      display: flex; /* Use flexbox to arrange buttons horizontally */
+      justify-content: center; /* Center the buttons horizontally */
+      gap: 20px; /* Add spacing between buttons */
+      margin-top: 20px; /* Add some space above the buttons */
+    }
     button {
       padding: 10px 20px;
-      margin: 5%; /* Adjust margin proportionally */
       font-size: 16px;
       cursor: pointer;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 90%; /* Buttons should fit on smaller screens */
     }
     footer {
       text-align: center;
@@ -85,12 +87,16 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   <div id="content" class="w3-container">
     <canvas id="myCanvas"></canvas>
 
-    <button id="drawRectBtn">Draw Rectangle</button>
-    <button id="drawNameBtn">Draw Name</button>
-    <button id="loadImageBtn">Load Image</button>
-    <button id="clearCanvasBtn">Clear Canvas</button>
+    <!-- Button container for horizontal alignment -->
+    <div class="button-container">
+      <button id="drawRectBtn">Draw Rectangle</button>
+      <button id="drawNameBtn">Draw Name</button>
+      <button id="loadImageBtn">Load Image</button>
+      <button id="clearCanvasBtn">Clear Canvas</button>
+    </div>
 
-    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code. THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION!!! </p>
+    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
   </div>
   
   <footer class="w3-bottom w3-container w3-flat-carrot">
@@ -123,11 +129,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       const img = new Image();
       img.src = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg'; // Example image URL
       img.onload = function () {
-        const imageWidth = canvas.width * 0.4;  // Set image width to 20% of the canvas width
-        const imageHeight = canvas.height * 0.4; // Set image height to 20% of the canvas height
+        const imageWidth = canvas.width * 0.2;  // Set image width to 20% of the canvas width
+        const imageHeight = canvas.height * 0.2; // Set image height to 20% of the canvas height
 
-        // Draw the image scaled to fit 40% of the canvas dimensions
-        ctx.drawImage(img, 20, 20, imageWidth, imageHeight); // Draw at (100, 100) with 40% size
+        // Draw the image scaled to fit 20% of the canvas dimensions
+        ctx.drawImage(img, 20, 20, imageWidth, imageHeight); // Draw at (20, 20) with 20% size
       };
     });
 
@@ -135,6 +141,6 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     document.getElementById('clearCanvasBtn').addEventListener('click', function () {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
-  </script>
-</body>
+   </script>
+  </body>
 </html>
