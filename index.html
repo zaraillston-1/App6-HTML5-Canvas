@@ -1,5 +1,6 @@
 <!DOCTYPE html> 
 <html> 
+
 <!-- The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only.  Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
  
 THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
@@ -25,115 +26,116 @@ https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 	
-   <head> 
-      <title>App6---HTML5-Canvas</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
- 	<style>
-  	  body {
-    	    margin: 0;
-	  }
-    	  .page {
-	     width: 100vw;
-	     height: 100vh;
-	     position: fixed;
-	     top: 0;
-	     left: -100vw;
-	     overflow-y: auto;
-	     z-index: 0;
-	     background color: hsl(0, 0%, 100%);
-	  }
-	  .page:target {
-	     left: 0vw;
-	     z-index: 1;
-	  }
-	  canvas {
-	     border: 2px solid black;
-	     margin: 10px;
-	     max-width: 100%
-	     height: auto;
-	  }
-	  button {
-	     padding: 10px 20px;
-	     margin: 10px;
-	     font-size: 16px;
-	     cursor: pointer;
-	  }
-	</style>
 
-   </head> 
+<head> 
+  <title>App6---HTML5-Canvas</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="w3-colors-flat.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .page {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: -100vw;
+      overflow-y: auto;
+      z-index: 0;
+      background-color: hsl(0, 0%, 100%);
+    }
+    .page:target {
+      left: 0vw;
+      z-index: 1;
+    }
+    canvas {
+      border: 2px solid black;
+      margin: 5%; /* Adjust margin proportionally */
+      max-width: 90%; /* Make canvas responsive */
+      height: auto;
+      display: block; /* Prevent canvas from floating */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5%; /* Adjust margin proportionally */
+      font-size: 16px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%; /* Buttons should fit on smaller screens */
+    }
+    footer {
+      text-align: center;
+    }
+  </style>
+</head> 
 
-   <body>
-	<div id= "header" class="w3-container w3-flat-carrot">
-	  <h1>App6---HTML5-Canvas</h1>
-	</div>
+<body>
+  <div id="header" class="w3-container w3-flat-carrot">
+    <h1>App6---HTML5-Canvas</h1>
+  </div>
 
-	<div id="content" class="w3-container">
-	  <canvas id="myCanvas"></canvas>
+  <div id="content" class="w3-container">
+    <canvas id="myCanvas"></canvas>
 
-	  <button id="drawRectBtn">Draw Rectangle</button>
-	  <button id="drawNameBtn">Draw Name</button>
-	  <button id="loadImageBtn">Load Image</button>
-	  <button id="clearCanvasBtn">Clear Canvas</button>
+    <button id="drawRectBtn">Draw Rectangle</button>
+    <button id="drawNameBtn">Draw Name</button>
+    <button id="loadImageBtn">Load Image</button>
+    <button id="clearCanvasBtn">Clear Canvas</button>
 
-	  <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
-	  <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-	</div>
-	
-	<footer class="w3-bottom w3-container w3-flat-carrot">
-	  <p>DIY!</p>
-	</footer>
+    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+  </div>
+  
+  <footer class="w3-bottom w3-container w3-flat-carrot">
+    <p>DIY!</p>
+  </footer>
 
-     <script>
+  <script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
 
-	const canvas = document.getElementById('myCanvas');
-	const ctx = canvas.getContext('2d');
+    // Set canvas dimensions dynamically based on the window size
+    canvas.width = window.innerWidth * 0.8; // 80% of the screen width
+    canvas.height = window.innerHeight * 0.4; // 40% of the screen height
 
-	canvas.width = window.innerWidth * 0.8;
-	canvas.height = window.innerHeight * 0.4;
+    // Add a click event for drawing a rectangle
+    document.getElementById('drawRectBtn').addEventListener('click', function () {
+      ctx.fillStyle = 'pink';
+      ctx.fillRect(50, 50, 200, 100);
+    });
 
-	document.getElementById('drawRectBtn').addEventListener('click', function () {
-	  ctx.fillStyle = 'pink';
-	  ctx.fillRect (50, 50, 200, 100);
-	});
+    // Add a click event for drawing your name
+    document.getElementById('drawNameBtn').addEventListener('click', function () {
+      ctx.font = '30px Arial';
+      ctx.fillStyle = 'orange';
+      ctx.fillText('Zara Elise Illston', 100, 200);
+    });
 
-	document.getElementById('drawNameBtn').addEventListener('click', function () {
-	  ctx.font = '30px Arial';
-	  ctx.fillStyle = 'orange';
-	  ctx.fillText('Zara Elise Illston', 100, 200);
-	});
+    // Add a click event to load and scale an image
+    document.getElementById('loadImageBtn').addEventListener('click', function () {
+      const img = new Image();
+      img.src = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg'; // Example image URL
+      img.onload = function () {
+        const imageWidth = canvas.width * 0.4;  // Set image width to 20% of the canvas width
+        const imageHeight = canvas.height * 0.4; // Set image height to 20% of the canvas height
 
-	document.getElementById('loadImageBtn').addEventListener('click', function () {
-  	  const img = new Image();
-  	  img.src = 'https://example.com/your-image.jpg'; // Replace with your image URL
-  	  img.onload = function () {
-   
-    	    const maxWidth = canvas.width - 100;  // Subtract margins or padding if necessary
-    	    const maxHeight = canvas.height - 100;
+        // Draw the image scaled to fit 40% of the canvas dimensions
+        ctx.drawImage(img, 20, 20, imageWidth, imageHeight); // Draw at (100, 100) with 40% size
+      };
+    });
 
-    	    let imageWidth = img.width;
-    	    let imageHeight = img.height;
-
-
-    	    if (img.width > maxWidth) {
-      		imageWidth = maxWidth;
-      		imageHeight = (img.height * maxWidth) / img.width;
-    	    }
-    	    if (imageHeight > maxHeight) {
-      		imageHeight = maxHeight;
-      		imageWidth = (img.width * maxHeight) / img.height;
-    	    }
-
-    	    ctx.drawImage(img, 300, 50, imageWidth, imageHeight);
-  	  };
-	});
-
-	document.getElementById('clearCanvasBtn').addEventListener('click', function () {
-  	  ctx.clearRect(0, 0, canvas.width, canvas.height);
-	});
-
-     </script>
-   </body>
+    // Clear the canvas
+    document.getElementById('clearCanvasBtn').addEventListener('click', function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  </script>
+</body>
 </html>
