@@ -77,6 +77,15 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       padding: 10px 0;
       color: white;
     }
+    /* Content area that allows scrolling */
+    #content {
+      flex-grow: 1;
+      overflow-y: auto; /* Make content scrollable */
+      padding-bottom: 100px; /* Ensure there's space at the bottom for the footer */
+    }
+    p {
+      padding: 10px; /* Add some padding to the text for readability */
+    }
   </style>
 </head> 
 
@@ -85,7 +94,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <h1>App6---HTML5-Canvas</h1>
   </div>
 
-  <div id="content" class="w3-container" style="flex-grow: 1;">
+  <div id="content" class="w3-container">
     <canvas id="myCanvas"></canvas>
 
     <!-- Button container for horizontal alignment -->
@@ -121,7 +130,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     document.getElementById('drawNameBtn').addEventListener('click', function () {
       ctx.font = '30px Chiller';
       ctx.fillStyle = 'orange';
-      ctx.fillText('Zara Elise Illston', 20, canvas.height / 2); // Place text vertically centered in canvas
+      ctx.fillText('Zara Elise Illston', 10, canvas.height / 2); // Place text vertically centered in canvas
     });
 
     // Add a click event to load and scale an image
@@ -145,3 +154,4 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </body>
 
 </html>
+
