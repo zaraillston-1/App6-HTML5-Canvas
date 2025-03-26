@@ -65,90 +65,57 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
    </head> 
 
+   <body>
+	<div id= "header" class="w3-container w3-flat-carrot">
+	  <h1>App6---HTML5-Canvas</h1>
+	</div>
 
-<script>
-	var docMod = document.lastModified; // loads last modified time stamp into docMod variable
-	alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
-	console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
+	<div id="content" class="w3-container">
+	  <canvas id="myCanvas"></canvas>
 
-      // Get the canvas and its context
-      const canvas = document.getElementById('myCanvas');
-      const ctx = canvas.getContext('2d');
+	  <button id="drawRectBtn">Draw Rectangle</button>
+	  <button id="drawNameBtn">Draw Name</button>
+	  <button id="loadImageBtn">Load Image</button>
+	  <button id="clearCanvasBtn">Clear Canvas</button>
 
-      // Set canvas size to fit the screen (90% width, 40% height)
-      canvas.width = window.innerWidth * 0.9;
-      canvas.height = window.innerHeight * 0.4;
-
-      // Draw Rectangle Button
-      document.getElementById('drawRectBtn').addEventListener('click', function () {
-        ctx.fillStyle = 'pink'; // Set the fill color
-        ctx.fillRect(50, 50, 200, 100); // Draw a rectangle
-      });
-
-      // Draw Name Button
-      document.getElementById('drawNameBtn').addEventListener('click', function () {
-        ctx.font = '30px Arial'; // Set font
-        ctx.fillStyle = 'pink'; // Set text color
-        ctx.fillText('Zara Elise Illston', 100, 200); // Draw your name
-      });
-
-      // Load Image Button
-      document.getElementById('loadImageBtn').addEventListener('click', function () {
-        const img = new Image();
-        img.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.holistapet.com%2Fblogs%2Fcat-breeds%2Fmaine-coon-guide&psig=AOvVaw3EHkA7sYtvVw6QH5lZi8ra&ust=1742996937191000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjYjd-vpYwDFQAAAAAdAAAAABAE'; // Replace with your image URL
-        img.onload = function () {
-          ctx.drawImage(img, 50, 300, 200, 200); // Draw image on canvas
-        };
-      });
-
-      // Clear Canvas Button
-      document.getElementById('clearCanvasBtn').addEventListener('click', function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
-      });
-    </script>
-
-
-
-<style>	
-.body {
-     margin: 0em;
-}
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
-}
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-}
-</style>
-
-<body>
-<div id="header" class="w3-container w3-flat-carrot">
-	<h1>App6---HTML5-Canvas</h1>
-</div>
+	  <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+	  <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+	</div>
 	
-<div id="content" class="w3-container">
-	<canvas id="myCanvas"></canvas>
-	<button id="drawRectBtn">Draw Rectangle</button>
-	<button id="drawNameBtn">Draw Name</button>
-	<button id="loadImageBtn">Load Image</button>
-	<button id="clearCanvasBtn">Clear Canvas</button>
+	<footer class="w3-bottom w3-container w3-flat-carrot">
+	  <p>DIY!</p>
+	</footer>
 
-		
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+     <script>
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
-</footer>
+	const canvas = document.getElementById('myCanvas');
+	const ctx = canvas.getContext('2d');
 
-</body>
+	canvas.width = window.innerWidth * 0.9;
+	canvas.height = window.innerHeight * 0.6;
+
+	document.getElementById('drawRectBtn').addEventListener('click', function () {
+	  ctx.fillStyle = 'pink';
+	  ctx.fillRect (50, 50, 200, 100);
+	});
+
+	document.getElementById('drawNameBtn').addEventListener('click', function () {
+	  ctx.font = '30px Arial';
+	  ctx.fillStyle = 'orange';
+	  ctx.fillText('Zara Elise Illston', 100, 200);
+	});
+
+	document.getElementById('loadImageBtn').addEventListener('click', function () {
+	  const img = new Image();
+	  img.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.m.wikipedia.org%2Fwiki%2FFile%3ARed_Kitten_01.jpg&psig=AOvVaw1fPiRyjK7y4AyHjexusQ8O&ust=1743082667744000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKi-rI3vp4wDFQAAAAAdAAAAABAJ';
+	  img.onload = function () {
+		ctx.drawImage(img, 50, 300, 200, 200);
+	  };
+	});
+
+	document.getElementById('clearCanvasBtn").addEventListener('click, function () {
+	  ctx.clearRect(0, 0, canvas.width, canvas.height);
+	});
+     </script>
+   </body>
 </html>
