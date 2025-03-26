@@ -21,7 +21,6 @@ https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 
-
 <head> 
   <title>App6---HTML5-Canvas</title>  
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,6 +31,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     body {
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensures body takes at least 100% of the viewport height */
     }
     .page {
       width: 100vw;
@@ -70,6 +72,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     }
     footer {
       text-align: center;
+      margin-top: auto; /* Push footer to the bottom */
+      background-color: #ff5722; /* Footer color */
+      padding: 10px 0;
+      color: white;
     }
   </style>
 </head> 
@@ -79,7 +85,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <h1>App6---HTML5-Canvas</h1>
   </div>
 
-  <div id="content" class="w3-container">
+  <div id="content" class="w3-container" style="flex-grow: 1;">
     <canvas id="myCanvas"></canvas>
 
     <!-- Button container for horizontal alignment -->
@@ -91,8 +97,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     </div>
 
     <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code. THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION!!!</p>
-   
-    </div>
+  </div>
   
   <footer class="w3-bottom w3-container w3-flat-carrot">
     <p>DIY!</p>
@@ -116,7 +121,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     document.getElementById('drawNameBtn').addEventListener('click', function () {
       ctx.font = '30px Chiller';
       ctx.fillStyle = 'orange';
-      ctx.fillText('Zara Elise Illston', 100,0)
+      ctx.fillText('Zara Elise Illston', 10, 10)
     });
 
     // Add a click event to load and scale an image
@@ -128,7 +133,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         const imageHeight = canvas.height * 0.4; // Set image height to 40% of the canvas height
 
         // Draw the image scaled to fit 20% of the canvas dimensions
-        ctx.drawImage(img, 100, 100, imageWidth, imageHeight); // Draw at (100, 100) with 20% size
+        ctx.drawImage(img, 100, 100, imageWidth, imageHeight); // Draw at (100, 100) with 40% size
       };
     });
 
@@ -136,6 +141,6 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     document.getElementById('clearCanvasBtn').addEventListener('click', function () {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
-   </script>
-  </body>
+  </script>
+</body>
 </html>
