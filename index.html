@@ -42,7 +42,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       #content {
         flex-grow: 1;
         overflow-y: auto;
-        padding: 20px; /* Adding padding for consistent spacing */
+        padding: 20px;
       }
 
       canvas {
@@ -58,7 +58,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         justify-content: center;
         gap: 20px;
         margin-top: 20px;
-        flex-wrap: wrap; /* Ensure buttons wrap on smaller screens */
+        flex-wrap: wrap;
       }
 
       button {
@@ -77,32 +77,32 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
       p {
         padding: 10px;
-        word-wrap: break-word; /* Prevent text cutting off */
+        word-wrap: break-word;
       }
 
       /* Media Queries for small devices like phones and tablets */
       @media (max-width: 768px) {
         canvas {
-          max-width: 95%; /* Make the canvas take more space on smaller screens */
+          max-width: 95%;
         }
 
         .button-container {
           gap: 10px;
-          flex-direction: column; /* Stack buttons vertically on small screens */
+          flex-direction: column;
         }
 
         button {
-          width: 80%; /* Make buttons full-width on small screens */
+          width: 80%;
         }
 
         p {
-          font-size: 14px; /* Adjust text size for better readability */
+          font-size: 14px;
         }
       }
 
       @media (max-width: 480px) {
         canvas {
-          max-width: 100%; /* Ensure canvas takes full width on very small screens */
+          max-width: 100%;
         }
 
         footer {
@@ -110,7 +110,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         }
 
         button {
-          width: 90%; /* Make buttons even wider on very small screens */
+          width: 90%;
         }
       }
     </style>
@@ -145,7 +145,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
       // Function to update canvas size dynamically
       function resizeCanvas() {
-        canvas.width = window.innerWidth * 0.7; // 70% of the screen width
+        canvas.width = window.innerWidth * 0.8; // 80% of the screen width
         canvas.height = window.innerHeight * 0.5; // 50% of the screen height
       }
 
@@ -159,15 +159,19 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       document.getElementById('drawRectBtn').addEventListener('click', function () {
         const rectWidth = 200;
         const rectHeight = 100;
+        const xPos = (canvas.width - rectWidth) / 2; // Center rectangle horizontally
+        const yPos = canvas.height / 4; // Place rectangle slightly lower vertically
         ctx.fillStyle = 'pink';
-        ctx.fillRect(100, 100, rectWidth, rectHeight);
+        ctx.fillRect(xPos, yPos, rectWidth, rectHeight);
       });
 
       // Add a click event for drawing your name
       document.getElementById('drawNameBtn').addEventListener('click', function () {
         ctx.font = '30px Chiller';
         ctx.fillStyle = 'orange';
-        ctx.fillText('Zara Elise Illston', 10, canvas.height / 1.5);
+        const textX = 10;
+        const textY = canvas.height / 1.5; // Adjust text position dynamically
+        ctx.fillText('Zara Elise Illston', textX, textY);
       });
 
       // Add a click event to load and scale an image
@@ -175,9 +179,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         const img = new Image();
         img.src = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg';
         img.onload = function () {
-          const imageWidth = canvas.width * 0.4; // Set image width to 40% of the canvas width
+          const imageWidth = canvas.width * 0.6; // Set image width to 60% of the canvas width
           const imageHeight = canvas.height * 0.4; // Set image height to 40% of the canvas height
-          ctx.drawImage(img, 200, 5, imageWidth, imageHeight);
+          const xPos = (canvas.width - imageWidth) / 2; // Center image horizontally
+          const yPos = 10; // Position image near the top
+          ctx.drawImage(img, xPos, yPos, imageWidth, imageHeight);
         };
       });
 
