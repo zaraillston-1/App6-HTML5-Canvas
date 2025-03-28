@@ -13,185 +13,207 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+The goal of this code is to create an app that draws elements onto a canvas. These elements include text of my name, a photo, and a rectangle. 
  
 Known Issues:
-blah, blah, blah, blah
+Extra code had to be added to resize elements onto different screen sizes. Also, the image looks squished on a laptop viewing screen.
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 
-  <head>
+ <head>
+    <!-- Character 'Meta' settings for responsive design in alternate screen sizes -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Title of the App -->
     <title>App6---HTML5-Canvas</title>
+
+    <!-- linking CSS for styling and colors -->
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="w3-colors-flat.css">
+
+    <!-- styling the page for layout and design adjustments -->
     <style>
-      /* Resetting margins and padding for consistent layout */
+      /* Body styling to ensure consistent margins and layout */
       body {
         margin: 0;
         padding: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif; /* Sets font for the page */
       }
 
+      /* Content area where the canvas and buttons exist */
       #content {
         flex-grow: 1;
         overflow-y: auto;
         padding: 20px;
-        padding-bottom: 120px; /* Added bottom padding to prevent footer overlap */
+        padding-bottom: 120px; /* Added padding to have extra space for footer */
       }
 
+      /* Styling for the canvas */
       canvas {
         border: 2px solid black;
-        margin: 5% auto; /* Adjust margin proportionally and center canvas */
-        max-width: 90%; /* Make canvas responsive */
-        height: auto;
-        display: block;
+        margin: 5% auto; /* Centers the canvas horizontally with 5% margin */
+        max-width: 90%; /* Makes canvas responsive with a max width of 90% */
+        height: auto; /* Keeps canvas height proportional to its width */
+        display: block; /* Ensures canvas takes up full line and centers */
       }
 
+      /* Button container for arranging buttons in a row with spacing */
       .button-container {
         display: flex;
         justify-content: center;
         gap: 20px;
         margin-top: 20px;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Allows wrapping for smaller screen sizes */
       }
 
+      /* Styling for each button (padding and font size) */
       button {
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
       }
 
+      /* Footer styling for positioning and background color */
       footer {
         text-align: center;
-        background-color: #ff5722;
+        background-color: #ff5722; /* Sets footer background color */
         padding: 10px 0;
-        color: white;
-        width: 100%;
-        position: relative; /* Ensure footer stays at the bottom */
+        color: white; /* Sets footer text color */
+        width: 100%; /* Makes footer span the full width of the page */
+        position: relative; /* Ensures footer stays at the bottom */
       }
 
+      /* Paragraph styling for the bottom warning text */
       p {
         padding: 10px;
-        word-wrap: break-word;
+        word-wrap: break-word; /* Ensures text breaks into multiple lines when too long */
       }
 
-      /* Media Queries for small devices like phones and tablets */
+      /* calling 'Media' to make the page responsive for mobile and tablet devices */
       @media (max-width: 768px) {
         canvas {
-          max-width: 95%;
+          max-width: 95%; /* Adjusts canvas to be 95% of screen width on tablets and phones */
         }
 
         .button-container {
           gap: 10px;
-          flex-direction: column;
+          flex-direction: column; /* Stacks buttons vertically on smaller screens */
         }
 
         button {
-          width: 80%;
+          width: 80%; /* Makes buttons 80% width of screen on smaller devices */
         }
 
         p {
-          font-size: 14px;
+          font-size: 14px; /* Reduces font size for smaller screens */
         }
       }
 
       @media (max-width: 480px) {
         canvas {
-          max-width: 100%;
+          max-width: 100%; /* Adjusts canvas to be full width on smaller phones */
         }
 
         footer {
-          padding: 10px;
+          padding: 10px; /* Reduces padding in footer on small screens */
         }
 
         button {
-          width: 90%;
+          width: 90%; /* Makes buttons 90% width of screen on phones */
         }
       }
     </style>
   </head>
 
   <body>
+    <!-- Header section with page title -->
     <div id="header" class="w3-container w3-flat-carrot">
       <h1>App6---HTML5-Canvas</h1>
     </div>
 
+    <!-- Content area with the canvas and buttons -->
     <div id="content" class="w3-container">
+      <!-- Canvas element where graphics will be drawn -->
       <canvas id="myCanvas"></canvas>
 
+      <!-- Container for buttons -->
       <div class="button-container">
+        <!-- Buttons for different actions like drawing a rectangle, loading an image, etc. -->
         <button id="drawRectBtn">Draw Rectangle</button>
         <button id="drawNameBtn">Draw Name</button>
         <button id="loadImageBtn">Load Image</button>
         <button id="clearCanvasBtn">Clear Canvas</button>
       </div>
 
+      <!-- Warning text section (bottom content) -->
       <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
       <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION!!!</p>
     </div>
 
+    <!-- Footer section at the bottom of the page -->
     <footer class="w3-bottom w3-container w3-flat-carrot">
       <p>DIY!</p>
     </footer>
 
+    <!-- JavaScript to handle canvas and button interactions -->
     <script>
+      // Reference to the canvas element
       const canvas = document.getElementById('myCanvas');
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d'); // 2D style for the canvas
 
-      // Function to update canvas size dynamically
+      // Function to resize the canvas based on window dimensions
       function resizeCanvas() {
-        canvas.width = window.innerWidth * 0.8; // 80% of the screen width
-        canvas.height = window.innerHeight * 0.5; // 50% of the screen height
+        canvas.width = window.innerWidth * 0.8; // Set canvas width to 80% of window width
+        canvas.height = window.innerHeight * 0.5; // Set canvas height to 50% of window height
       }
 
-      // Resize the canvas on window resize
+      // Resize the canvas when the window is resized
       window.addEventListener('resize', resizeCanvas);
 
-      // Initial canvas size setup
+      // Initial setup of canvas size
       resizeCanvas();
 
-      // Add a click event for drawing a rectangle
+      // Event listener for the "Draw Rectangle" button
       document.getElementById('drawRectBtn').addEventListener('click', function () {
         const rectWidth = 200;
         const rectHeight = 100;
-        const xPos = (canvas.width - rectWidth) / 2; // Center rectangle horizontally
-        const yPos = canvas.height / 4; // Place rectangle slightly lower vertically
-        ctx.fillStyle = 'pink';
-        ctx.fillRect(xPos, yPos, rectWidth, rectHeight);
+        const xPos = (canvas.width - rectWidth) / 2; // Center the rectangle horizontally
+        const yPos = canvas.height / 4; // Position the rectangle lower vertically
+        ctx.fillStyle = 'pink'; // Set the color of the rectangle
+        ctx.fillRect(xPos, yPos, rectWidth, rectHeight); // Draw the rectangle
       });
 
-      // Add a click event for drawing your name
+      // Event listener for the "Draw Name" button
       document.getElementById('drawNameBtn').addEventListener('click', function () {
-        ctx.font = '30px Chiller';
-        ctx.fillStyle = 'orange';
-        const textX = 10;
-        const textY = canvas.height / 1.5; // Adjust text position dynamically
-        ctx.fillText('Zara Elise Illston', textX, textY);
+        ctx.font = '30px Chiller'; // Set font for the name
+        ctx.fillStyle = 'orange'; // Set text color
+        const textX = 10; // Position text at 10px from the left
+        const textY = canvas.height / 1.5; // Position text vertically
+        ctx.fillText('Zara Elise Illston', textX, textY); // Draw the text
       });
 
-      // Add a click event to load and scale an image
+      // Event listener for the "Load Image" button
       document.getElementById('loadImageBtn').addEventListener('click', function () {
-        const img = new Image();
-        img.src = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg';
+        const img = new Image(); // Create a new image object
+        img.src = 'https://t4.ftcdn.net/jpg/02/66/72/41/360_F_266724172_Iy8gdKgMa7XmrhYYxLCxyhx6J7070Pr8.jpg'; // Set the image URL
         img.onload = function () {
-          const imageWidth = canvas.width * 0.6; // Set image width to 60% of the canvas width
-          const imageHeight = canvas.height * 0.4; // Set image height to 40% of the canvas height
+          const imageWidth = canvas.width * 0.6; // Set image width to 60% of canvas width
+          const imageHeight = canvas.height * 0.4; // Set image height to 40% of canvas height
           const xPos = (canvas.width - imageWidth) / 2; // Center image horizontally
           const yPos = 10; // Position image near the top
-          ctx.drawImage(img, xPos, yPos, imageWidth, imageHeight);
+          ctx.drawImage(img, xPos, yPos, imageWidth, imageHeight); // Draw the image
         };
       });
 
-      // Clear the canvas
+      // Event listener for the "Clear Canvas" button
       document.getElementById('clearCanvasBtn').addEventListener('click', function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
       });
     </script>
   </body>
